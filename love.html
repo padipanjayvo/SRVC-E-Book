@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Love Randomizer</title>
+    <style>
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background-color: #fff0f3; 
+            margin: 0; 
+            transition: background 0.5s;
+        }
+        .card { 
+            text-align: center; 
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 40px; 
+            border-radius: 30px; 
+            box-shadow: 0 15px 35px rgba(255, 75, 110, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 { color: #ff4d6d; font-size: 1.5rem; margin-bottom: 20px; min-height: 80px; display: flex; align-items: center; justify-content: center; }
+        .heart { color: #ff4d6d; font-size: 50px; margin-bottom: 10px; animation: pulse 1.5s infinite; }
+        button { 
+            padding: 15px 40px; 
+            font-size: 1.2rem; 
+            cursor: pointer; 
+            background-color: #ff4d6d; 
+            color: white; 
+            border: none; 
+            border-radius: 50px; 
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: 0.3s;
+        }
+        button:hover { background-color: #ff758f; transform: translateY(-3px); }
+        button:active { transform: translateY(1px); }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="heart">❤️</div>
+    <h1 id="love-text">กดเพื่อสุ่มคำบอกรัก...</h1>
+    <button onclick="randomLove()">สุ่มหัวใจ!</button>
+</div>
+
+<script>
+    const loveQuotes = [
+        "ก้าวแรกไม่เป็นไร ก้าวมาในใจเป็นเราพอ",
+        "วาเลนไทน์มีแค่วันเดียว แต่รักเธอคนเดียวมีให้ทุกวัน",
+        "ฝนตกอาจจะทำให้เหงา แต่ถ้ามีเราไม่เหงาแน่นอน",
+        "ไม่อยากเป็นแว่นให้เธอใส่ แต่อยากเป็นคนที่อยู่ในสายตา",
+        "น่ารักแบบคุณ มีนามสกุลใช้หรือยัง?",
+        "รักคุณเท่าฟ้า แต่ตอนนี้รอคุณมาหาอยู่ที่บ้าน",
+        "ในน้ำมีปลา ในสายตามีแต่เธอ",
+        "กินข้าวต้องมีกับ แต่ถ้ากินกับเราต้องมีใจ",
+        "ไม่ต้องเป็นที่หนึ่งในใจใคร ขอแค่เป็นที่เดียวในใจเธอก็พอ",
+        "มองหน้าเราเห็นอะไร เห็นคนที่รักคุณหมดใจหรือยัง?",
+        "เทคโนโลยีธุรกิจดิจิทัล วิทยาลัยอาชีวศึกษาสุรินทร์ รักคุณที่สุด"
+    ];
+
+    const colors = ["#fff0f3", "#ffccd5", "#ffb3c1", "#ff8fa3", "#ffb3c1"];
+
+    function randomLove() {
+        const textElement = document.getElementById("love-text");
+        const randomIndex = Math.floor(Math.random() * loveQuotes.length);
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        // ใส่เอฟเฟกต์เปลี่ยนข้อความ
+        textElement.style.opacity = 0;
+        setTimeout(() => {
+            textElement.innerText = loveQuotes[randomIndex];
+            textElement.style.opacity = 1;
+            document.body.style.backgroundColor = randomColor;
+        }, 200);
+    }
+</script>
+
+</body>
+</html>
