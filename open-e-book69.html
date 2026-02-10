@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-book อนุสรณ์ SRVC68 - กันเกรา อนุสรณ์นักเรียน นักศึกษา ปีการศึกษา 2568</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;600;800&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Kanit', sans-serif;
+            /* Background Image */
+            background: url('https://img5.pic.in.th/file/secure-sv1/-.-68-2.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        /* Canvas for Fireworks - Keep it behind content */
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none; /* Let clicks pass through to body for fireworks */
+        }
+
+        /* --- Futuristic Container --- */
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            
+            /* Advanced Glassmorphism */
+            background: rgba(255, 255, 255, 0.15); /* More transparent */
+            backdrop-filter: blur(20px) saturate(150%); /* Stronger blur and saturation */
+            border-radius: 40px;
+            padding: 50px 70px;
+            
+            /* Glowing borders and layered shadows for depth */
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3), /* Deep shadow */
+                inset 0 0 30px rgba(255, 255, 255, 0.2), /* Inner glow */
+                0 0 50px rgba(255, 105, 180, 0.4); /* Outer pink neon glow */
+                
+            /* Subtle reflective gradient overlay */
+            background-image: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+            
+            animation: fadeInUp 1.5s cubic-bezier(0.2, 1, 0.3, 1); /* Smoother entrance */
+        }
+
+        /* --- Majestic Typography --- */
+        h2 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-transform: uppercase; /* Uppercase for majesty */
+            letter-spacing: 3px; /* Spacing for elegance */
+            font-weight: 800;
+            /* Neon text shadow */
+            text-shadow: 
+                0 0 10px rgba(255, 105, 180, 0.8),
+                0 0 20px rgba(255, 105, 180, 0.4),
+                2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        p {
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+            opacity: 0.9;
+        }
+
+        /* --- Futuristic Button --- */
+        .btn-open {
+            position: relative;
+            display: inline-block;
+            padding: 18px 50px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            /* Gradient background instead of flat white */
+            background: linear-gradient(90deg, #ff6f91, #ff9a9e, #d580ff);
+            background-size: 200% auto;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: none;
+            /* Neon button glow */
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.5);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-open:hover {
+            transform: translateY(-5px) scale(1.05);
+            background-position: right center; /* Move gradient on hover */
+            box-shadow: 
+                0 10px 30px rgba(255, 105, 180, 0.7),
+                0 0 50px rgba(255, 105, 180, 0.4);
+        }
+
+        /* Shimmer effect on button hover */
+        .btn-open::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
+            transform: skewX(-20deg);
+            transition: none;
+            z-index: -1;
+        }
+
+        .btn-open:hover::after {
+            left: 150%;
+            transition: left 0.7s ease-in-out;
+        }
+
+        /* --- Elements --- */
+        .css-flower {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            /* brighter flowers */
+            background: radial-gradient(circle, #fff5d7 20%, transparent 20%),
+                        radial-gradient(circle, #ff6f91 20%, transparent 20%),
+                        radial-gradient(circle, #ff6f91 20%, transparent 20%),
+                        radial-gradient(circle, #ff6f91 20%, transparent 20%),
+                        radial-gradient(circle, #ff6f91 20%, transparent 20%);
+            background-size: 100% 100%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+            background-position: center center, top center, bottom center, left center, right center;
+            animation: spin 8s linear infinite, fall linear infinite;
+            z-index: 2;
+            filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.8)); /* Floral glow */
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translate(-50%, -30%) scale(0.9); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes fall {
+            0% { top: -10%; opacity: 1; }
+            100% { top: 110%; opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="container">
+        <h2>Welcome to E-book<br>หนังสืออนุสรณ์ 2568</h2>
+        <p>วิทยาลัยอาชีวศึกษาสุรินทร์</p>
+        <a href="https://drive.google.com/drive/folders/1dBJaphAdUxeXwZokmBpmdPMc1OoDgK2b" target="_blank" class="btn-open">
+            ✨ เปิด E-book เข้าชมเลย! ✨
+        </a>
+    </div>
+
+    <script>
+        // --- Fireworks Script (Enhanced) ---
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+
+        window.addEventListener('resize', () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        });
+
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                // Increased velocity for bigger bursts
+                this.velocity = {
+                    x: (Math.random() - 0.5) * 12,
+                    y: (Math.random() - 0.5) * 12
+                };
+                this.alpha = 1;
+                this.friction = 0.95;
+                this.gravity = 0.04;
+            }
+
+            draw() {
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                // Slightly larger particles with glow
+                ctx.arc(this.x, this.y, Math.random() * 2 + 1, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10; // Add glow to particles
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0; // Reset shadow
+            }
+
+            update() {
+                this.velocity.x *= this.friction;
+                this.velocity.y *= this.friction;
+                this.velocity.y += this.gravity;
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= 0.015; // Fade faster
+            }
+        }
+
+        let particles = [];
+        function createFirework(x, y) {
+            // More vibrant bright colors
+            const colors = ['#ff00cc', '#33ffcc', '#ffff00', '#ff3300', '#ffffff', '#00ccff'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            // Increased particle count for "อลังการ"
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle(x, y, color));
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, width, height);
+            
+            particles.forEach((particle, index) => {
+                if (particle.alpha > 0) {
+                    particle.update();
+                    particle.draw();
+                } else {
+                    particles.splice(index, 1);
+                }
+            });
+
+            if (Math.random() < 0.04) { 
+                createFirework(Math.random() * width, Math.random() * height / 2);
+            }
+        }
+        animate();
+
+        // --- Falling Flowers Script (Glowing) ---
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('css-flower');
+            flower.style.left = Math.random() * 100 + 'vw';
+            const size = Math.random() * 25 + 15; // Slightly smaller, more delicate
+            flower.style.width = size + 'px';
+            flower.style.height = size + 'px';
+            const duration = Math.random() * 5 + 5;
+            flower.style.animationDuration = `6s, ${duration}s`;
+            document.body.appendChild(flower);
+            setTimeout(() => { flower.remove(); }, duration * 1000);
+        }
+        setInterval(createFlower, 400);
+
+        // Interactive Fireworks on Click (attached to body now)
+        document.body.addEventListener('click', (e) => {
+            // Don't fire if clicking the button
+            if (e.target.closest('.btn-open')) return;
+             createFirework(e.clientX, e.clientY);
+        });
+    </script>
+</body>
+</html>
